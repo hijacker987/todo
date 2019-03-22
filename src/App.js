@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import InboxIcon from '@material-ui/icons/Inbox';
-import Checkbox from '@material-ui/core/Checkbox';
-
+import Task from "./Task.js";
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+const tasks = [
+  "empty the dishwasher",
+  "do my homework",
+  "feed the dog",
+  "mow the lawn",
+];
 class App extends Component {
   render() {
     return (
@@ -24,17 +26,13 @@ class App extends Component {
               </Typography>
             </Toolbar>
             <List component="nav">
-                   <ListItem button>
-
-                     <ListItemText primary="Empty the dishwasher" />
-                      <Checkbox/>
-                   </ListItem>
-                   <ListItem button>
-
-                     <ListItemText primary="Do my homework" />
-                      <Checkbox/>
-                   </ListItem>
-                   </List>
+            { tasks.map((task, index)=> {
+              return <Task item={task} index={index + 1}/>;
+            })}
+            </List>
+            <Fab color="primary">
+         <AddIcon />
+         </Fab>
 
         </Paper>
 
